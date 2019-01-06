@@ -30,7 +30,7 @@ void FormProgramsList::loadPrograms()
 
     }
 
-    qDebug() << progsDataMap[0];
+    //qDebug() << progsDataMap[0];
 
 }
 

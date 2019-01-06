@@ -27,6 +27,10 @@ private slots:
 private slots:
     void onFormMainLoggedOut();
 
+signals:
+    void willLogin();
+
+
 private:
     void readUsersData();
     QStringList usersData;

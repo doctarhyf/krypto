@@ -1,11 +1,22 @@
 #include "formmain.h"
 #include "ui_formmain.h"
+#define CRYPT_LANE 100
 
 FormMain::FormMain(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FormMain)
 {
+
+
     ui->setupUi(this);
+
+
+    ui->pushButtonCryptDecrypt->setVisible(false);
+    ui->pushButtonCryptDecrypt->setEnabled(false);
+    ui->pushButtonCryptAll->setVisible(false);
+    ui->pushButtonCryptAll->setEnabled(false);
+    ui->pushButtonDecryptAll->setVisible(false);
+    ui->pushButtonDecryptAll->setEnabled(false);
 
     startTimer(1000);
 
@@ -13,6 +24,8 @@ FormMain::FormMain(QWidget *parent) :
     usersList = new FormUsers;
 
     programsAreCrypted = false;
+
+    loadProgsList();
 }
 
 FormMain::~FormMain()
@@ -24,14 +37,189 @@ FormMain::~FormMain()
 
 void FormMain::decryptAll()
 {
-    qDebug() << "Decrypting ...";
+    loadProgsList();
+
+        if(progsData.size() == 0) {
+
+            qDebug() << "Progs list is empty";
+            return;
+        }
+
+        for(int i = 0; i < progsData.size(); i++){
+
+            QString pg = progsData.at(i).split(",")[1];
+            decryptProgram(pg);
+            qDebug() << "gonna decrypt : " << pg;
+        }
+}
+
+void FormMain::decryptProgram(QString program)
+{
+
+
+    prog = 0;
+    ui->progressBar->setValue(0);
+    QFile file(program);
+
+    if(!file.exists()){
+
+        QMessageBox::critical(this, "Fichier invalide", "Le fichier <strong>" + file.fileName() + "</strong> est invalide, veuillez selection un autre fichier");
+        return;
+    }
+
+    QFileInfo fi(file);
+
+
+    //int crypLength =  fi.size() / 2;
+    //maxProg = crypLength * 2;
+    QStringList fcomps = fi.absoluteFilePath().split("/");
+    fcomps.removeLast();
+    QString dirName = fcomps.join("/");
+    QFile bcpFile(dirName + "/~" + fi.baseName() + ".data");
+
+    qDebug() << "dbg path : " << bcpFile.fileName();
+
+    if(file.open(QIODevice::ReadWrite) && bcpFile.open(QIODevice::ReadWrite)){
+
+        QDataStream dsFile(&file);
+        QDataStream dsBcp(&bcpFile);
+        QByteArray bcpBytes;
+
+        for(int i = 0; i < CRYPT_LANE ; i++){
+
+            qint8 byte;
+            dsBcp >> byte;
+            bcpBytes.append((char) byte);
+
+            prog ++;
+            ui->progressBar->setMinimum(0);
+            ui->progressBar->setValue(prog);
+
+
+        }
+
+        file.seek(0);
+        bcpFile.seek(0);
+
+
+        for(int y = 0; y < CRYPT_LANE ; y++){
+
+            dsFile << (qint8)bcpBytes.at(y);
+            dsBcp <<(qint8)0x00;
+
+            prog ++;
+            ui->progressBar->setMinimum(0);
+            ui->progressBar->setValue(prog);
+
+        }
+
+        bcpFile.remove();
+
+
+
+    }
+
+    //emit fileDecrypted();
+    qDebug() << "File decypted : " << program;
 }
 
 void FormMain::cryptAll()
 {
-    qDebug() << "Crypting all ...";
+
+    loadProgsList();
+
+    if(progsData.size() == 0) {
+
+        qDebug() << "Progs list is empty";
+        return;
+    }
+
+    for(int i = 0; i < progsData.size(); i++){
+
+        QString pg = progsData.at(i).split(",")[1];
+        cryptProgram(pg);
+        qDebug() << "gonna crypt : " << pg;
+    }
+
 
 }
+
+void FormMain::cryptProgram(QString program)
+{
+
+    qDebug() << "Crypting pg : " << program;
+
+prog = 0;
+        ui->progressBar->setValue(0);
+        QFile file(program);
+
+        if(!file.exists()){
+
+            QMessageBox::critical(this, "Fichier invalide", "Le fichier <strong>" + file.fileName() + "</strong> est invalide, veuillez selection un autre fichier");
+            return;
+        }
+
+        QFileInfo fi(file);
+
+
+
+
+        //int crypLength =  fi.size() / 2;
+        //maxProg = crypLength * 2;
+        QStringList fcomps = fi.absoluteFilePath().split("/");
+        fcomps.removeLast();
+        QString dirName = fcomps.join("/");
+        QFile bcpFile(dirName + "/~" + fi.baseName() + ".data");
+
+        qDebug() << "dbg path : " << bcpFile.fileName();
+
+        if(file.open(QIODevice::ReadWrite) && bcpFile.open(QIODevice::ReadWrite)){
+
+            QDataStream dsFile(&file);
+            QDataStream dsBcp(&bcpFile);
+            QByteArray bcpBytes;
+
+            for(int i = 0; i < CRYPT_LANE ; i++){
+
+                qint8 byte;
+                dsFile >> byte;
+                bcpBytes.append((char) byte);
+
+                prog ++;
+                ui->progressBar->setMinimum(0);
+                ui->progressBar->setValue(prog);
+
+
+            }
+
+            file.seek(0);
+            bcpFile.seek(0);
+
+
+            for(int y = 0; y < CRYPT_LANE ; y++){
+
+                dsBcp << (qint8)bcpBytes.at(y);
+                dsFile <<(qint8)0x00;
+
+                prog ++;
+                ui->progressBar->setMinimum(0);
+                ui->progressBar->setValue(prog);
+
+            }
+
+
+
+
+
+        }
+
+        //emit fileCrypted();
+
+        qDebug() << "File cryped : " << program;
+}
+
+
+
 
 void FormMain::logout()
 {
@@ -51,6 +239,14 @@ void FormMain::logout()
 
         }
 
+
+
+}
+
+void FormMain::loadProgsList()
+{
+    QSettings sets;
+    progsData = sets.value("progsList").toStringList();
 
 
 }
@@ -92,6 +288,11 @@ void FormMain::timerEvent(QTimerEvent *event)
     ui->labelTimeEllapesed->setText(timeEllapsed);
 }
 
+void FormMain::onLoggedIn()
+{
+    decryptAll();
+}
+
 
 
 
@@ -124,4 +325,14 @@ void FormMain::on_pushButtonCryptDecrypt_clicked()
     }else{
         cryptAll();
     }
+}
+
+void FormMain::on_pushButtonCryptAll_clicked()
+{
+    cryptAll();
+}
+
+void FormMain::on_pushButtonDecryptAll_clicked()
+{
+    decryptAll();
 }

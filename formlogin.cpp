@@ -16,6 +16,7 @@ FormLogin::FormLogin(QWidget *parent) :
     readUsersData();
 
     connect(formMain, SIGNAL(loggedOut()), this, SLOT(onFormMainLoggedOut()));
+    connect(this, SIGNAL(willLogin()), formMain, SLOT(onLoggedIn()));
 }
 
 FormLogin::~FormLogin()
@@ -40,6 +41,7 @@ void FormLogin::login()
 
         formMain->setProperty("user", ui->lineEditUsername->text());
         formMain->show();
+        emit willLogin();
         hide();
 
 
@@ -82,6 +84,8 @@ void FormLogin::onFormMainLoggedOut()
 
     show();
 }
+
+
 
 void FormLogin::readUsersData()
 {

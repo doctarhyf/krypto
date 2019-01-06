@@ -31,7 +31,12 @@ private:
     FormUsers *usersList;
     void cryptAll();
     void logout();
+    void cryptProgram(QString program);
+    void decryptProgram(QString program);
     QTime startTime;
+    int prog;
+    void loadProgsList();
+    QStringList progsData;
 
 protected:
     void closeEvent(QCloseEvent *event);
@@ -42,12 +47,14 @@ signals:
     void loggedOut();
 
 private slots:
-
+    void onLoggedIn();
     void on_pushButtonProgramsList_clicked();
     void on_pushButtonUsersList_clicked();
     void on_pushButtonLogout_clicked();
 
     void on_pushButtonCryptDecrypt_clicked();
+    void on_pushButtonCryptAll_clicked();
+    void on_pushButtonDecryptAll_clicked();
 };
 
 #endif // FORMMAIN_H

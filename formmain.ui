@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>227</width>
-    <height>143</height>
+    <width>224</width>
+    <height>199</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,6 +20,24 @@
       <string>CRYPT/DECRYPT ALL</string>
      </property>
     </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QPushButton" name="pushButtonCryptAll">
+       <property name="text">
+        <string>Crypt All</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonDecryptAll">
+       <property name="text">
+        <string>Decrypt All</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -75,6 +93,13 @@
     <widget class="QPushButton" name="pushButtonLogout">
      <property name="text">
       <string>Logout</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QProgressBar" name="progressBar">
+     <property name="value">
+      <number>0</number>
      </property>
     </widget>
    </item>
