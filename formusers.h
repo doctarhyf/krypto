@@ -27,9 +27,12 @@ private slots:
 
     void on_pushButtonDelUser_clicked();
 
+    void on_lineEditNewPassword_textChanged(const QString &arg1);
+
 private:
     int currentUserRow;
     QStringList usersData;
+    void writeUsersDataToFile();
     bool userExists(QString username);
     void addNewUser(QString username, QString password);
     void loadUsers();

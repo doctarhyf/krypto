@@ -145,6 +145,17 @@ void FormUsers::on_pushButtonDelUser_clicked()
     qDebug() << usersData;
     usersData.takeAt(currentUserRow);
 
+
+    writeUsersDataToFile();
+
+    loadUsers();
+    qDebug() << usersData;
+
+}
+
+void FormUsers::writeUsersDataToFile()
+{
+    QFile file(USERS_FILE_PATH);
     if(file.open(QIODevice::ReadWrite | QIODevice::Truncate)){
 
 
@@ -154,9 +165,18 @@ void FormUsers::on_pushButtonDelUser_clicked()
         }
 
     }
+}
 
+void FormUsers::on_lineEditNewPassword_textChanged(const QString &arg1)
+{
 
-    loadUsers();
-    qDebug() << usersData;
+    if(currentUserRow != -1){
+        QStringList ud = usersData.at(currentUserRow).split(",");
+        ud.replace(1, arg1);
 
+        usersData.replace(currentUserRow, ud.join(","));
+
+        writeUsersDataToFile();
+        //loadUsers();
+    }
 }
