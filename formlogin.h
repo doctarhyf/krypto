@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QtDebug>
 #include <QMessageBox>
+#include "formmain.h"
 
 namespace Ui {
 class FormLogin;
@@ -20,9 +21,16 @@ public:
 private slots:
     void on_pushButtonLogin_clicked();
 
+    void on_lineEditPassword_returnPressed();
+
+private slots:
+    void onFormMainLoggedOut();
+
 private:
+    FormMain *formMain;
     void login();
     Ui::FormLogin *ui;
+    bool userWithPasswordExists(QString username, QString password);
 };
 
 #endif // FORMLOGIN_H

@@ -13,19 +13,28 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    widgetProgramsList.cpp \
+    #widgetProgramsList.cpp \
     formlogin.cpp \
-    formmain.cpp
+    formmain.cpp \
+    formusers.cpp \
+    formprogramslist.cpp \
+    dialogaddprogram.cpp
 
 HEADERS  += \
-    widgetProgramsList.h \
+    #widgetProgramsList.h \
     formlogin.h \
-    formmain.h
+    formmain.h \
+    formusers.h \
+    formprogramslist.h \
+    dialogaddprogram.h
 
 FORMS    += \
-    widgetProgramsList.ui \
+    #widgetProgramsList.ui \
     formlogin.ui \
-    formmain.ui
+    formmain.ui \
+    formusers.ui \
+    formprogramslist.ui \
+    dialogaddprogram.ui
 
 RESOURCES += \
     res.qrc

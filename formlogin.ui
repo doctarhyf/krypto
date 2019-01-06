@@ -33,6 +33,9 @@
            <height>0</height>
           </size>
          </property>
+         <property name="text">
+          <string>admin</string>
+         </property>
         </widget>
        </item>
        <item>
@@ -49,6 +52,9 @@
            <width>191</width>
            <height>16777215</height>
           </size>
+         </property>
+         <property name="text">
+          <string>admin</string>
          </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>

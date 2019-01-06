@@ -7,10 +7,15 @@ FormLogin::FormLogin(QWidget *parent) :
     ui(new Ui::FormLogin)
 {
     ui->setupUi(this);
+
+    formMain = new FormMain();
+
+    connect(formMain, SIGNAL(loggedOut()), this, SLOT(onFormMainLoggedOut()));
 }
 
 FormLogin::~FormLogin()
 {
+    delete formMain;
     delete ui;
 }
 
@@ -26,8 +31,10 @@ void FormLogin::login()
 
     if(userWithPasswordExists(username, password)){
 
-        FormMain main;
-        main.show();
+        //FormMain main;
+        formMain->setProperty("user", ui->lineEditUsername->text());
+        formMain->show();
+        hide();
 
 
     }else{
@@ -35,4 +42,26 @@ void FormLogin::login()
         QMessageBox::critical(this, tr("Incorrect username or password"), tr("The username and password you interred is incorrect, please try again!"));
 
     }
+}
+
+bool FormLogin::userWithPasswordExists(QString username, QString password)
+{
+    bool res = false;
+
+    if(username == "admin" && password == "admin"){
+        res = true;
+    }
+
+    return res;
+}
+
+void FormLogin::on_lineEditPassword_returnPressed()
+{
+    login();
+}
+
+void FormLogin::onFormMainLoggedOut()
+{
+
+    show();
 }
