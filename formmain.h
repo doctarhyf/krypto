@@ -9,6 +9,7 @@
 //#include <widgetProgramsList.h>
 #include "formusers.h"
 #include "formprogramslist.h"
+#include "logger.h"
 
 namespace Ui {
 class FormMain;
@@ -23,6 +24,8 @@ public:
     ~FormMain();
 
 private:
+    void decryptAll();
+    bool programsAreCrypted;
     Ui::FormMain *ui;
     FormProgramsList *programsList;
     FormUsers *usersList;
@@ -42,6 +45,9 @@ private slots:
 
     void on_pushButtonProgramsList_clicked();
     void on_pushButtonUsersList_clicked();
+    void on_pushButtonLogout_clicked();
+
+    void on_pushButtonCryptDecrypt_clicked();
 };
 
 #endif // FORMMAIN_H

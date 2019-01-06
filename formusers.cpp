@@ -1,5 +1,6 @@
 #include "formusers.h"
 #include "ui_formusers.h"
+#define USERS_LOG_TAB 1
 
 
 const QString USERS_FILE_PATH(QDir::tempPath() + "/krypto_users");
@@ -11,6 +12,7 @@ FormUsers::FormUsers(QWidget *parent) :
     ui->setupUi(this);
 
     loadUsers();
+    ui->textEditUsersLog->setHtml( Logger::loadLogData());
 }
 
 FormUsers::~FormUsers()
@@ -178,5 +180,29 @@ void FormUsers::on_lineEditNewPassword_textChanged(const QString &arg1)
 
         writeUsersDataToFile();
         //loadUsers();
+    }
+}
+
+void FormUsers::on_tabWidget_currentChanged(int index)
+{
+    if(index == USERS_LOG_TAB){
+
+        ui->textEditUsersLog->setHtml( Logger::loadLogData());
+    }
+}
+
+void FormUsers::on_pushButtonClearLog_clicked()
+{
+
+
+    QFile file(LOGS_FILE_PATH);
+    //file.remove();
+    if(file.open(QIODevice::ReadWrite | QIODevice::Truncate)){
+
+        //file.
+        ui->textEditUsersLog->clear();
+        QTextStream ts(&file);
+        ts << "";
+
     }
 }

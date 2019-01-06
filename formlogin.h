@@ -5,6 +5,7 @@
 #include <QtDebug>
 #include <QMessageBox>
 #include "formmain.h"
+#include "logger.h"
 
 namespace Ui {
 class FormLogin;
@@ -27,6 +28,8 @@ private slots:
     void onFormMainLoggedOut();
 
 private:
+    void readUsersData();
+    QStringList usersData;
     FormMain *formMain;
     void login();
     Ui::FormLogin *ui;

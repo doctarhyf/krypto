@@ -11,6 +11,8 @@ FormMain::FormMain(QWidget *parent) :
 
     programsList = new FormProgramsList;
     usersList = new FormUsers;
+
+    programsAreCrypted = false;
 }
 
 FormMain::~FormMain()
@@ -20,20 +22,36 @@ FormMain::~FormMain()
     delete ui;
 }
 
+void FormMain::decryptAll()
+{
+    qDebug() << "Decrypting ...";
+}
+
 void FormMain::cryptAll()
 {
-    // .... crypt all programs
-
-    logout();
+    qDebug() << "Crypting all ...";
 
 }
 
 void FormMain::logout()
 {
-    //... save logs
+    //qDebug() << "Closing main window ...";
 
-    emit loggedOut();
-    hide();
+        int btn = QMessageBox::question(this, tr("Wanna logout"), tr("Are you sure you wanna logout and crypt all programs?"), QMessageBox::Yes, QMessageBox::No);
+
+        if(btn == QMessageBox::Yes){
+
+            ui->labelTimeEllapesed->setText("00:00:00");
+            cryptAll();
+            Logger::logData("Logout", ui->labelUsername->text());
+            emit loggedOut();
+                hide();
+
+        }else{
+
+        }
+
+
 
 }
 
@@ -42,18 +60,7 @@ void FormMain::logout()
 void FormMain::closeEvent(QCloseEvent *event)
 {
     event->ignore();
-    qDebug() << "Closing main window ...";
-
-    int btn = QMessageBox::question(this, tr("Quit and crypt all"), tr("Are you sure you want to quit and crypt all?"), QMessageBox::Yes, QMessageBox::No);
-
-    if(btn == QMessageBox::Yes){
-
-        ui->labelTimeEllapesed->setText("00:00:00");
-        cryptAll();
-
-    }else{
-
-    }
+    logout();
 }
 
 void FormMain::showEvent(QShowEvent *event)
@@ -98,4 +105,23 @@ void FormMain::on_pushButtonProgramsList_clicked()
 void FormMain::on_pushButtonUsersList_clicked()
 {
     usersList->show();
+}
+
+void FormMain::on_pushButtonLogout_clicked()
+{
+    logout();
+}
+
+
+
+void FormMain::on_pushButtonCryptDecrypt_clicked()
+{
+    QSettings sets;
+    programsAreCrypted = sets.value("progs_crypted", false).toBool();
+
+    if(programsAreCrypted){
+        decryptAll();
+    }else{
+        cryptAll();
+    }
 }

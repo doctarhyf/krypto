@@ -7,6 +7,7 @@
 #include <QtGui>
 #include <QMessageBox>
 #include <QListWidgetItem>
+#include "logger.h"
 
 namespace Ui {
 class FormUsers;
@@ -28,6 +29,10 @@ private slots:
     void on_pushButtonDelUser_clicked();
 
     void on_lineEditNewPassword_textChanged(const QString &arg1);
+
+    void on_tabWidget_currentChanged(int index);
+
+    void on_pushButtonClearLog_clicked();
 
 private:
     int currentUserRow;

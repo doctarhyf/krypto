@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     formusers.cpp \
     formprogramslist.cpp \
     dialogaddprogram.cpp \
-    dialogadduser.cpp
+    dialogadduser.cpp \
+    logger.cpp
 
 HEADERS  += \
     #widgetProgramsList.h \
@@ -28,7 +29,8 @@ HEADERS  += \
     formusers.h \
     formprogramslist.h \
     dialogaddprogram.h \
-    dialogadduser.h
+    dialogadduser.h \
+    logger.h
 
 FORMS    += \
     #widgetProgramsList.ui \

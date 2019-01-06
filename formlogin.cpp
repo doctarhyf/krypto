@@ -2,6 +2,9 @@
 #include "ui_formlogin.h"
 #include "formmain.h"
 
+const QString USERS_FILE_PATH(QDir::tempPath() + "/krypto_users");
+const QString LOG_FILE_PATH(QDir::tempPath() + "/krypto_users_log");
+
 FormLogin::FormLogin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FormLogin)
@@ -9,6 +12,8 @@ FormLogin::FormLogin(QWidget *parent) :
     ui->setupUi(this);
 
     formMain = new FormMain();
+
+    readUsersData();
 
     connect(formMain, SIGNAL(loggedOut()), this, SLOT(onFormMainLoggedOut()));
 }
@@ -31,7 +36,8 @@ void FormLogin::login()
 
     if(userWithPasswordExists(username, password)){
 
-        //FormMain main;
+        Logger::logData("Login", username);
+
         formMain->setProperty("user", ui->lineEditUsername->text());
         formMain->show();
         hide();
@@ -46,15 +52,22 @@ void FormLogin::login()
 
 bool FormLogin::userWithPasswordExists(QString username, QString password)
 {
+    readUsersData();
     bool res = false;
+    int idx = -1;
 
     if(username == "admin" && password == "admin"){
         res = true;
     }
 
-    if(username == "doctarhyf" && password == "disck12" ){
-        res = true;
+    for(int i = 0; i < usersData.size(); i++){
+        if(usersData.indexOf(username + "," + password) != -1){
+            idx = i;
+            res = true;
+        }
     }
+
+
 
     return res;
 }
@@ -68,4 +81,32 @@ void FormLogin::onFormMainLoggedOut()
 {
 
     show();
+}
+
+void FormLogin::readUsersData()
+{
+
+    usersData.clear();
+    //ui->listWidgetUsers->clear();
+    QFile file( USERS_FILE_PATH);
+
+    //QStringList users;
+    if(file.open(QIODevice::ReadWrite)){
+
+
+        QTextStream ts(&file);
+        QString line;
+        int i = 0;
+        while(ts.readLineInto(&line)){
+            //usersData << line;
+            //QStringList ud = line.split(",");
+            usersData << line;
+
+        }
+
+
+
+    }
+
+    qDebug() << "D from file : " << usersData;
 }
