@@ -17,7 +17,11 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="lineEdit">
+       <property name="placeholderText">
+        <string>Search ...</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="pushButtonRealoadAllPrograms">
@@ -119,9 +123,9 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_4">
+        <widget class="QLabel" name="labelProgName">
          <property name="text">
-          <string>FL Studio</string>
+          <string>...</string>
          </property>
         </widget>
        </item>
@@ -133,9 +137,9 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_3">
+        <widget class="QLabel" name="labelProgPath">
          <property name="text">
-          <string>C:/Program files(xb6)/ ...</string>
+          <string>...</string>
          </property>
         </widget>
        </item>

@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     formmain.cpp \
     formusers.cpp \
     formprogramslist.cpp \
-    dialogaddprogram.cpp
+    dialogaddprogram.cpp \
+    dialogadduser.cpp
 
 HEADERS  += \
     #widgetProgramsList.h \
@@ -26,7 +27,8 @@ HEADERS  += \
     formmain.h \
     formusers.h \
     formprogramslist.h \
-    dialogaddprogram.h
+    dialogaddprogram.h \
+    dialogadduser.h
 
 FORMS    += \
     #widgetProgramsList.ui \
@@ -34,7 +36,8 @@ FORMS    += \
     formmain.ui \
     formusers.ui \
     formprogramslist.ui \
-    dialogaddprogram.ui
+    dialogaddprogram.ui \
+    dialogadduser.ui
 
 RESOURCES += \
     res.qrc

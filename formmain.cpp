@@ -59,7 +59,17 @@ void FormMain::closeEvent(QCloseEvent *event)
 void FormMain::showEvent(QShowEvent *event)
 {
     startTime = QTime::currentTime();
-    ui->labelUsername->setText(property("user").toString());
+    QString username = property("user").toString();
+    ui->labelUsername->setText(username);
+
+    if(username != "admin"){
+        ui->pushButtonUsersList->setVisible(false);
+        ui->pushButtonProgramsList->setVisible(false);
+    }else{
+        ui->pushButtonUsersList->setVisible(true);
+        ui->pushButtonProgramsList->setVisible(true);
+    }
+
     event->accept();
 }
 

@@ -2,6 +2,11 @@
 #define FORMUSERS_H
 
 #include <QWidget>
+#include <QtDebug>
+#include <QtCore>
+#include <QtGui>
+#include <QMessageBox>
+#include <QListWidgetItem>
 
 namespace Ui {
 class FormUsers;
@@ -15,7 +20,19 @@ public:
     explicit FormUsers(QWidget *parent = 0);
     ~FormUsers();
 
+private slots:
+    void on_pushButtonAddUser_clicked();
+
+    void on_listWidgetUsers_itemClicked(QListWidgetItem *item);
+
+    void on_pushButtonDelUser_clicked();
+
 private:
+    int currentUserRow;
+    QStringList usersData;
+    bool userExists(QString username);
+    void addNewUser(QString username, QString password);
+    void loadUsers();
     Ui::FormUsers *ui;
 };
 

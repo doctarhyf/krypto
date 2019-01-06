@@ -8,6 +8,7 @@ FormProgramsList::FormProgramsList(QWidget *parent) :
     ui->setupUi(this);
 
     loadPrograms();
+    ui->pushButtonRunProgram->setVisible(false);
 
 }
 
@@ -109,18 +110,67 @@ void FormProgramsList::on_listWidget_itemClicked(QListWidgetItem *item)
     int row = ui->listWidget->currentIndex().row();
     QStringList  pd = progsData.at(row).split(",");
 
+    ui->pushButtonRunProgram->setEnabled(true);
+
+    ui->labelProgName->setText(pd.at(0));
+    ui->labelProgPath->setText(pd.at(1));
+
+    currentProgPath = pd.at(1);
+
+
     qDebug() << pd;
 
  }
 
 void FormProgramsList::on_pushButtonClearAllPrograms_clicked()
 {
+
+    int res = QMessageBox::question(this, tr("Delete all program?"), tr("Are you sure you wanna remove all programs?"), QMessageBox::Yes, QMessageBox::No);
+
+    if(res != QMessageBox::Yes){
+        return;
+    }
+
     QSettings set;
-    set.clear();
+    set.remove("progsList");
     loadPrograms();
+    ui->labelProgName->setText("...");
+    ui->labelProgPath->setText("...");
 }
 
 void FormProgramsList::on_pushButtonRealoadAllPrograms_clicked()
 {
+    loadPrograms();
+}
+
+void FormProgramsList::on_pushButtonRunProgram_clicked()
+{
+
+}
+
+void FormProgramsList::on_pushButtonDeleteProgram_clicked()
+{
+
+    int res = QMessageBox::question(this, tr("Delete the program?"), tr("Are you sure you wanna delete this program?"), QMessageBox::Yes, QMessageBox::No);
+
+    if(res != QMessageBox::Yes){
+        return;
+    }
+
+
+    qDebug() << "Deleting : " << currentProgPath;
+
+    QSettings sets;
+    QStringList progs = sets.value("progsList").toStringList();
+
+    for(int i = 0 ; i < progs.size(); i++){
+        QString prog = progs.at(i);
+        if(prog.indexOf(currentProgPath) != -1){
+            progs.removeAt(i);
+            break;
+        }
+    }
+
+    sets.setValue("progsList", progs);
     loadPrograms();
 }

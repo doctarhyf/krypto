@@ -23,9 +23,14 @@ void DialogAddProgram::timerEvent(QTimerEvent *event)
 {
     programExists = QFile(ui->lineEditProgramPath->text()).exists();
 
-    if(ui->lineEditProgramName->text() != "" && programExists){
+    if(programExists){
         ui->buttonBox->setEnabled(true);
         ui->labelProgramNotFound->setVisible(false);
+
+        QFileInfo fi(ui->lineEditProgramPath->text());
+
+        ui->labelProgramName->setText(fi.baseName());
+
     }else{
         ui->buttonBox->setEnabled(false);
         ui->labelProgramNotFound->setVisible(true);
@@ -35,7 +40,8 @@ void DialogAddProgram::timerEvent(QTimerEvent *event)
 void DialogAddProgram::accept()
 {
 
-    emit programShouldBeAdded(ui->lineEditProgramName->text(), ui->lineEditProgramPath->text());
+    QFileInfo fi(QFile(ui->lineEditProgramPath->text()));
+    emit programShouldBeAdded(fi.baseName(), ui->lineEditProgramPath->text());
     QDialog::accept();
 
 }
@@ -52,6 +58,7 @@ void DialogAddProgram::on_toolButtonLoadPath_clicked()
 
 
     if(programExists){
+
         ui->lineEditProgramPath->setText(path);
     }else{
         QMessageBox::critical(this, tr("Invalid file"), tr("The file selected is invalid, please select another one"));

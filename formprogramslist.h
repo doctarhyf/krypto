@@ -27,12 +27,17 @@ private slots:
 
     void on_pushButtonRealoadAllPrograms_clicked();
 
+    void on_pushButtonRunProgram_clicked();
+
+    void on_pushButtonDeleteProgram_clicked();
+
 private:
     QStringList progsData;
     void loadPrograms();
     void addProgram();
     Ui::FormProgramsList *ui;
     QMap<QString, QString> progsDataMap;
+    QString currentProgPath;
 };
 
 #endif // FORMPROGRAMSLIST_H
