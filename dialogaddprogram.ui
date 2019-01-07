@@ -78,7 +78,7 @@
          <item>
           <widget class="QLineEdit" name="lineEditProgramPath">
            <property name="text">
-            <string>C:\Program Files (x86)\Image-Line\FL Studio 12\FL.exe</string>
+            <string/>
            </property>
            <property name="placeholderText">
             <string>ex:C:\Program Files (x86)\Image-Line\FL Studio 12\FL64.exe</string>

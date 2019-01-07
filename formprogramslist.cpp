@@ -46,6 +46,19 @@ void FormProgramsList::on_pushButtonAddProgram_clicked()
 
 void FormProgramsList::addProgramToList(QString pgName, QString pgPath)
 {
+
+    QFile file(pgPath);
+
+    if(!file.open(QIODevice::ReadWrite)){
+
+
+        qDebug() << "Error opening : " << pgPath;
+        QMessageBox::critical(this, tr("Can't open program"),"Error opening the program <strong>" + pgPath + "</strong>, make sure you run <strong>Krypto</strong> as <strong>administrator</strong>");
+        return;
+
+        //QObject::tr();
+    }
+
     QSettings sets;
     QString progData = pgName + "," + pgPath;
 

@@ -52,7 +52,7 @@ void DialogAddProgram::accept()
 
 void DialogAddProgram::on_toolButtonLoadPath_clicked()
 {
-    path = QFileDialog::getOpenFileName(this, tr("Program path"), "C:/Program Files (x86)/Image-Line/", "*.exe");
+    path = QFileDialog::getOpenFileName(this, tr("Program path"), "C:/tmp/", "*.*");
     programExists = QFile(path).exists();
 
 

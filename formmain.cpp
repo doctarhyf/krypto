@@ -38,8 +38,8 @@ FormMain::~FormMain()
 void FormMain::decryptAll()
 {
     loadProgsList();
-
     prog = 0;
+
     ui->progressBar->setValue(0);
 
         if(progsData.size() == 0) {
@@ -81,7 +81,7 @@ void FormMain::decryptProgram(QString program)
     QStringList fcomps = fi.absoluteFilePath().split("/");
     fcomps.removeLast();
     QString dirName = fcomps.join("/");
-    QFile bcpFile(dirName + "/~" + fi.baseName() + ".data");
+    QFile bcpFile(QDir::tempPath() + "/krypto/~" + fi.baseName() + ".data");
 
     qDebug() << "dbg path : " << bcpFile.fileName();
 
@@ -97,11 +97,7 @@ void FormMain::decryptProgram(QString program)
             dsBcp >> byte;
             bcpBytes.append((char) byte);
 
-            prog ++;
-            ui->progressBar->setMinimum(0);
-            ui->progressBar->setValue(100 - (100 * progsData.size() / 2) / prog);
 
-            qDebug() << "decrypting % " << ui->progressBar->value();
 
 
         }
@@ -116,10 +112,9 @@ void FormMain::decryptProgram(QString program)
             dsBcp <<(qint8)0x00;
 
             prog ++;
+            //qDebug() << "Prog : " << prog / progsData.size();
             ui->progressBar->setMinimum(0);
-            ui->progressBar->setValue(100 - (100 * progsData.size() / 2) / prog);
-
-            qDebug() << "decrypting % " << ui->progressBar->value();
+            ui->progressBar->setValue( prog / progsData.size());
 
         }
 
@@ -130,14 +125,13 @@ void FormMain::decryptProgram(QString program)
     }
 
     //emit fileDecrypted();
-    qDebug() << "File decypted : " << program;
+
 }
 
 void FormMain::cryptAll()
 {
 
     loadProgsList();
-
     prog = 0;
 
     if(progsData.size() == 0) {
@@ -184,11 +178,14 @@ void FormMain::cryptProgram(QString program)
         fcomps.removeLast();
         QString dirName = fcomps.join("/");
         QString bcpFileName("~" + fi.baseName() );
-        QFile bcpFile(dirName + "/" + bcpFileName + ".data");
+        QFile bcpFile(QDir::tempPath() + "/krypto/" + bcpFileName + ".data");
 
         qDebug() << "dbg path : " << bcpFile.fileName();
 
-        if(file.open(QIODevice::ReadWrite) && bcpFile.open(QIODevice::ReadWrite)){
+        bool openFile = file.open(QIODevice::ReadWrite);
+        bool openBcpFile = bcpFile.open(QIODevice::ReadWrite);
+
+        if(openFile && openBcpFile){
 
             QDataStream dsFile(&file);
             QDataStream dsBcp(&bcpFile);
@@ -200,11 +197,7 @@ void FormMain::cryptProgram(QString program)
                 dsFile >> byte;
                 bcpBytes.append((char) byte);
 
-                prog ++;
-                ui->progressBar->setMinimum(0);
-                ui->progressBar->setValue(100 - (100 * progsData.size() / 2 ) / prog);
 
-                qDebug() << "crypting % " << ui->progressBar->value();
 
 
             }
@@ -220,9 +213,8 @@ void FormMain::cryptProgram(QString program)
 
                 prog ++;
                 ui->progressBar->setMinimum(0);
-                ui->progressBar->setValue(100 - (100 * progsData.size() / 2 ) / prog);
+                ui->progressBar->setValue( prog / progsData.size());
 
-                qDebug() << "crypting % " << ui->progressBar->value();
 
             }
 
@@ -235,6 +227,11 @@ void FormMain::cryptProgram(QString program)
             bcpFile.close();
             file.close();
 
+
+        }else{
+
+            if(!openFile) qDebug() << "Error opening file : " << file.fileName();
+            if(!openBcpFile) qDebug() << "Error opening file : " << bcpFile.fileName();
 
         }
 
