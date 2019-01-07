@@ -39,6 +39,9 @@ void FormMain::decryptAll()
 {
     loadProgsList();
 
+    prog = 0;
+    ui->progressBar->setValue(0);
+
         if(progsData.size() == 0) {
 
             qDebug() << "Progs list is empty";
@@ -51,14 +54,17 @@ void FormMain::decryptAll()
             decryptProgram(pg);
             qDebug() << "gonna decrypt : " << pg;
         }
+
+
+    emit allFilesDecrypted();
 }
 
 void FormMain::decryptProgram(QString program)
 {
 
 
-    prog = 0;
-    ui->progressBar->setValue(0);
+    //prog = 0;
+    //ui->progressBar->setValue(0);
     QFile file(program);
 
     if(!file.exists()){
@@ -93,7 +99,9 @@ void FormMain::decryptProgram(QString program)
 
             prog ++;
             ui->progressBar->setMinimum(0);
-            ui->progressBar->setValue(prog);
+            ui->progressBar->setValue(100 - (100 * progsData.size() / 2) / prog);
+
+            qDebug() << "decrypting % " << ui->progressBar->value();
 
 
         }
@@ -109,7 +117,9 @@ void FormMain::decryptProgram(QString program)
 
             prog ++;
             ui->progressBar->setMinimum(0);
-            ui->progressBar->setValue(prog);
+            ui->progressBar->setValue(100 - (100 * progsData.size() / 2) / prog);
+
+            qDebug() << "decrypting % " << ui->progressBar->value();
 
         }
 
@@ -128,6 +138,8 @@ void FormMain::cryptAll()
 
     loadProgsList();
 
+    prog = 0;
+
     if(progsData.size() == 0) {
 
         qDebug() << "Progs list is empty";
@@ -141,6 +153,8 @@ void FormMain::cryptAll()
         qDebug() << "gonna crypt : " << pg;
     }
 
+    emit allFilesCrypted();
+
 
 }
 
@@ -149,8 +163,8 @@ void FormMain::cryptProgram(QString program)
 
     qDebug() << "Crypting pg : " << program;
 
-prog = 0;
-        ui->progressBar->setValue(0);
+        //prog = 0;
+        //ui->progressBar->setValue(0);
         QFile file(program);
 
         if(!file.exists()){
@@ -169,7 +183,8 @@ prog = 0;
         QStringList fcomps = fi.absoluteFilePath().split("/");
         fcomps.removeLast();
         QString dirName = fcomps.join("/");
-        QFile bcpFile(dirName + "/~" + fi.baseName() + ".data");
+        QString bcpFileName("~" + fi.baseName() );
+        QFile bcpFile(dirName + "/" + bcpFileName + ".data");
 
         qDebug() << "dbg path : " << bcpFile.fileName();
 
@@ -187,7 +202,9 @@ prog = 0;
 
                 prog ++;
                 ui->progressBar->setMinimum(0);
-                ui->progressBar->setValue(prog);
+                ui->progressBar->setValue(100 - (100 * progsData.size() / 2 ) / prog);
+
+                qDebug() << "crypting % " << ui->progressBar->value();
 
 
             }
@@ -203,19 +220,28 @@ prog = 0;
 
                 prog ++;
                 ui->progressBar->setMinimum(0);
-                ui->progressBar->setValue(prog);
+                ui->progressBar->setValue(100 - (100 * progsData.size() / 2 ) / prog);
+
+                qDebug() << "crypting % " << ui->progressBar->value();
 
             }
 
 
+            QString bcpPath(QDir::tempPath() + "/krypto/backup/" + program.replace(":","#").replace("/"," % ") +  ".data");
 
+            qDebug() << "BCP Path : " << bcpPath;
+
+            bcpFile.copy(bcpPath);
+            bcpFile.close();
+            file.close();
 
 
         }
 
         //emit fileCrypted();
 
-        qDebug() << "File cryped : " << program;
+       // qDebug() << "File cryped : " << program;
+
 }
 
 

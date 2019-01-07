@@ -3,7 +3,7 @@
 #define USERS_LOG_TAB 1
 
 
-const QString USERS_FILE_PATH(QDir::tempPath() + "/krypto_users");
+const QString USERS_FILE_PATH(QDir::tempPath() + "/krypto/krypto_users");
 
 FormUsers::FormUsers(QWidget *parent) :
     QWidget(parent),
@@ -28,7 +28,7 @@ void FormUsers::on_pushButtonAddUser_clicked()
 bool FormUsers::userExists(QString username)
 {
     bool res = false;
-    QString filePath = QDir::tempPath() + "/krypto_users";
+    QString filePath = USERS_FILE_PATH;
     QFile file(filePath);
 
     if(file.open(QIODevice::ReadOnly)){

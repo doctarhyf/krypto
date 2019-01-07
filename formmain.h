@@ -45,6 +45,8 @@ protected:
 
 signals:
     void loggedOut();
+    void allFilesCrypted();
+    void allFilesDecrypted();
 
 private slots:
     void onLoggedIn();
