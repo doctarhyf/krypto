@@ -313,6 +313,7 @@ void FormMain::timerEvent(QTimerEvent *event)
 
 void FormMain::onLoggedIn()
 {
+    on_initStartTime();
     decryptAll();
 }
 
@@ -334,6 +335,11 @@ void FormMain::on_pushButtonUsersList_clicked()
 void FormMain::on_pushButtonLogout_clicked()
 {
     logout();
+}
+
+void FormMain::on_initStartTime()
+{
+    startTime = QTime::currentTime();
 }
 
 

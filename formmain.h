@@ -53,6 +53,7 @@ private slots:
     void on_pushButtonProgramsList_clicked();
     void on_pushButtonUsersList_clicked();
     void on_pushButtonLogout_clicked();
+    void on_initStartTime();
 
     void on_pushButtonCryptDecrypt_clicked();
     void on_pushButtonCryptAll_clicked();

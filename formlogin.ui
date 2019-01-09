@@ -34,7 +34,7 @@
           </size>
          </property>
          <property name="text">
-          <string>admin</string>
+          <string>ex: bld</string>
          </property>
         </widget>
        </item>
@@ -54,7 +54,7 @@
           </size>
          </property>
          <property name="text">
-          <string>admin</string>
+          <string/>
          </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>
