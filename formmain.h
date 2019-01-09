@@ -24,6 +24,7 @@ public:
     ~FormMain();
 
 private:
+    int counter;
     void decryptAll();
     bool programsAreCrypted;
     Ui::FormMain *ui;

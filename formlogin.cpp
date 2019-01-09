@@ -98,6 +98,7 @@ void FormLogin::on_lineEditPassword_returnPressed()
 void FormLogin::onFormMainLoggedOut()
 {
 
+    ui->lineEditPassword->clear();
     show();
 }
 

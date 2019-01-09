@@ -19,6 +19,7 @@ FormMain::FormMain(QWidget *parent) :
     ui->pushButtonDecryptAll->setEnabled(false);
 
     startTimer(1000);
+    counter = 0;
 
     programsList = new FormProgramsList;
     usersList = new FormUsers;
@@ -303,12 +304,19 @@ void FormMain::timerEvent(QTimerEvent *event)
 {
 
 
-    int h = QTime::currentTime().hour() - startTime.hour() ;
-    int m = QTime::currentTime().minute() - startTime.minute()  ;
-    int s = QTime::currentTime().second() - startTime.second() ;
 
-    QString timeEllapsed = QString::number(h) + ":" + QString::number(m) + ":" + QString::number(s);
+    int h = (counter / 1000) / 3600;//QTime::currentTime().hour() - startTime.hour() ;
+    int m = (counter / 1000) / 60;//QTime::currentTime().minute() - startTime.minute()  ;
+    int s = (counter / 1000) % 60 ;//QTime::currentTime().second() - startTime.second() ;
+
+    QString strh = h < 10 ? "0" + QString::number(h) : QString::number(h);
+    QString strm = m < 10 ? "0" + QString::number(m) : QString::number(m);
+    QString strs = s < 10 ? "0" + QString::number(s) : QString::number(s);
+
+    QString timeEllapsed = strh + ":" + strm + ":" + strs;
     ui->labelTimeEllapesed->setText(timeEllapsed);
+
+    counter += 1000;
 }
 
 void FormMain::onLoggedIn()
@@ -340,6 +348,7 @@ void FormMain::on_pushButtonLogout_clicked()
 void FormMain::on_initStartTime()
 {
     startTime = QTime::currentTime();
+    counter = 0;
 }
 
 
