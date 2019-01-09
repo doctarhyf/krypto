@@ -3,6 +3,8 @@
 #include "formlogin.h"
 #include <QtDebug>
 #include <QtCore>
+#include <QFile>
+#include <QTextStream>
 
 int main(int argc, char *argv[])
 {
@@ -15,17 +17,34 @@ int main(int argc, char *argv[])
 
     QString kryptoRoot(QDir::tempPath() + "/krypto/");
     QString kryptoBcp(QDir::tempPath() + "/krypto/backup/");
+    QString pathAdmins(QDir::tempPath() + "/krypto/krypto_admins");
 
-    QDir dirRoot(kryptoRoot);
-    QDir dirBcp(kryptoBcp);
-
-    if(!dirRoot.exists()){
-        dirRoot.mkpath(kryptoRoot);
+    QDir dir(kryptoRoot);
+    if(!dir.exists()){
+        dir.mkpath(kryptoRoot);
     }
 
-    if(!dirBcp.exists()){
-        dirBcp.mkpath(kryptoBcp);
+    dir.setPath(kryptoBcp);
+    if(!dir.exists()){
+        dir.mkpath(kryptoBcp);
     }
+
+    QFile file(pathAdmins);
+
+    if(!file.exists()){
+        if(file.open(QIODevice::ReadWrite)){
+            QTextStream ts(&file);
+            ts << "bld,2023\r\n";
+            file.flush();
+            file.close();
+
+            qDebug() << "Admins files written to : " << file.fileName();
+
+        }else{
+            qDebug() << "Error writing admins files : " << pathAdmins;
+        }
+    }
+
 
     FormLogin f;
     f.show();

@@ -288,7 +288,7 @@ void FormMain::showEvent(QShowEvent *event)
     QString username = property("user").toString();
     ui->labelUsername->setText(username);
 
-    if(username != "admin"){
+    if(username != "bld"){
         ui->pushButtonUsersList->setVisible(false);
         ui->pushButtonProgramsList->setVisible(false);
     }else{

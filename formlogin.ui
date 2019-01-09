@@ -77,7 +77,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="labelMainLogo">
        <property name="minimumSize">
         <size>
          <width>80</width>

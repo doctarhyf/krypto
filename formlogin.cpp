@@ -3,6 +3,7 @@
 #include "formmain.h"
 
 const QString USERS_FILE_PATH(QDir::tempPath() + "/krypto_users");
+const QString ADMINS_FILE_PATH(QDir::tempPath() + "/krypto_admins");
 const QString LOG_FILE_PATH(QDir::tempPath() + "/krypto_users_log");
 
 FormLogin::FormLogin(QWidget *parent) :
@@ -11,6 +12,7 @@ FormLogin::FormLogin(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    isAdmin = false;
     formMain = new FormMain();
 
     readUsersData();
@@ -55,23 +57,34 @@ void FormLogin::login()
 bool FormLogin::userWithPasswordExists(QString username, QString password)
 {
     readUsersData();
-    bool res = false;
+    //bool res = false;
     int idx = -1;
 
-    if(username == "admin" && password == "admin"){
-        res = true;
-    }
+    /*
+    if(username == "bld" && password == "2023"){
+        isAdmin = true;
+        return true;
+    }*/
+
+    for(int i = 0; i < adminsData.size(); i++){
+            if(adminsData.indexOf(username + "," + password) != -1){
+                idx = i;
+                isAdmin = true;
+                return true;
+            }
+        }
 
     for(int i = 0; i < usersData.size(); i++){
         if(usersData.indexOf(username + "," + password) != -1){
             idx = i;
-            res = true;
+            isAdmin = false;
+            return true;
         }
     }
 
 
 
-    return res;
+    return false;
 }
 
 void FormLogin::on_lineEditPassword_returnPressed()
@@ -90,6 +103,7 @@ void FormLogin::onFormMainLoggedOut()
 void FormLogin::readUsersData()
 {
 
+    adminsData.clear();
     usersData.clear();
     //ui->listWidgetUsers->clear();
     QFile file( USERS_FILE_PATH);
@@ -112,5 +126,25 @@ void FormLogin::readUsersData()
 
     }
 
-    qDebug() << "D from file : " << usersData;
+    file.close();
+    file.setFileName(QDir::tempPath() + "/krypto/krypto_admins");
+    if(file.open(QIODevice::ReadWrite)){
+
+
+        QTextStream ts(&file);
+        QString line;
+        int i = 0;
+        while(ts.readLineInto(&line)){
+            //usersData << line;
+            //QStringList ud = line.split(",");
+            adminsData << line;
+
+        }
+
+
+
+    }
+
+    qDebug() << "users from file : " << usersData;
+    qDebug() << "admins from file : " << adminsData;
 }

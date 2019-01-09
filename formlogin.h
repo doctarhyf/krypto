@@ -32,8 +32,9 @@ signals:
 
 
 private:
+    bool isAdmin;
     void readUsersData();
-    QStringList usersData;
+    QStringList usersData, adminsData;
     FormMain *formMain;
     void login();
     Ui::FormLogin *ui;
