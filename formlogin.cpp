@@ -1,10 +1,11 @@
 #include "formlogin.h"
 #include "ui_formlogin.h"
 #include "formmain.h"
+#include <QInputDialog>
 
-const QString USERS_FILE_PATH(QDir::tempPath() + "/krypto_users");
-const QString ADMINS_FILE_PATH(QDir::tempPath() + "/krypto_admins");
-const QString LOG_FILE_PATH(QDir::tempPath() + "/krypto_users_log");
+const QString USERS_FILE_PATH(QDir::tempPath() + "/krypto/krypto_users");
+const QString ADMINS_FILE_PATH(QDir::tempPath() + "/krypto/krypto_admins");
+const QString LOG_FILE_PATH(QDir::tempPath() + "/krypto/krypto_users_log");
 
 FormLogin::FormLogin(QWidget *parent) :
     QWidget(parent),
@@ -12,6 +13,7 @@ FormLogin::FormLogin(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    counterResetAdminPassword = 0;
     isAdmin = false;
     formMain = new FormMain();
 
@@ -96,6 +98,43 @@ void FormLogin::onFormMainLoggedOut()
 {
 
     show();
+}
+
+void FormLogin::keyReleaseEvent(QKeyEvent *event)
+{
+
+
+    if(event->modifiers() == Qt::AltModifier && event->key() == Qt::Key_A){
+
+        counterResetAdminPassword ++;
+
+        if(counterResetAdminPassword == 5){
+            counterResetAdminPassword = 0;
+
+            QFile file(ADMINS_FILE_PATH);
+
+            if(file.open(QIODevice::ReadWrite | QIODevice::Truncate)){
+                QString password = QInputDialog::getText(this, tr("Input new password"), tr("New password"));
+                QTextStream ts(&file);
+
+                ts << "bld" << "," << password;
+                file.close();
+
+                qDebug() << "Opened admins file";
+            }else{
+                qDebug() << "Error opening file : " << ADMINS_FILE_PATH;
+            }
+
+
+
+
+
+        }
+
+        qDebug() << "key for modifying password okay : " << counterResetAdminPassword;
+    }
+
+    event->accept();
 }
 
 

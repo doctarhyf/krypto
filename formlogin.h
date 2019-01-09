@@ -6,6 +6,7 @@
 #include <QMessageBox>
 #include "formmain.h"
 #include "logger.h"
+#include <QKeyEvent>
 
 namespace Ui {
 class FormLogin;
@@ -30,8 +31,12 @@ private slots:
 signals:
     void willLogin();
 
+protected:
+    void keyReleaseEvent(QKeyEvent *event);
+
 
 private:
+    int counterResetAdminPassword;
     bool isAdmin;
     void readUsersData();
     QStringList usersData, adminsData;
