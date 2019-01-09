@@ -50,6 +50,8 @@ signals:
     void allFilesDecrypted();
 
 private slots:
+    void onAllFilesCrypted();
+    void onAllFilesDecrypted();
     void onLoggedIn();
     void on_pushButtonProgramsList_clicked();
     void on_pushButtonUsersList_clicked();

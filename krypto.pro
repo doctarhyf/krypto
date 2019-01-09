@@ -43,3 +43,5 @@ FORMS    += \
 
 RESOURCES += \
     res.qrc
+
+RC_FILE = myrc.rc

@@ -10,7 +10,7 @@ FormMain::FormMain(QWidget *parent) :
 
     ui->setupUi(this);
 
-
+    ui->progressBar->setVisible(false);
     ui->pushButtonCryptDecrypt->setVisible(false);
     ui->pushButtonCryptDecrypt->setEnabled(false);
     ui->pushButtonCryptAll->setVisible(false);
@@ -25,7 +25,8 @@ FormMain::FormMain(QWidget *parent) :
     usersList = new FormUsers;
 
     programsAreCrypted = false;
-
+    connect(this, SIGNAL(allFilesCrypted()), this, SLOT(onAllFilesCrypted()));
+    connect(this, SIGNAL(allFilesDecrypted()), this, SLOT(onAllFilesDecrypted()));
     loadProgsList();
 }
 
@@ -38,6 +39,7 @@ FormMain::~FormMain()
 
 void FormMain::decryptAll()
 {
+    ui->progressBar->setVisible(true);
     loadProgsList();
     prog = 0;
 
@@ -132,6 +134,7 @@ void FormMain::decryptProgram(QString program)
 void FormMain::cryptAll()
 {
 
+    ui->progressBar->setVisible(true);
     loadProgsList();
     prog = 0;
 
@@ -317,6 +320,16 @@ void FormMain::timerEvent(QTimerEvent *event)
     ui->labelTimeEllapesed->setText(timeEllapsed);
 
     counter += 1000;
+}
+
+void FormMain::onAllFilesCrypted()
+{
+    ui->progressBar->setVisible(false);
+}
+
+void FormMain::onAllFilesDecrypted()
+{
+    ui->progressBar->setVisible(false);
 }
 
 void FormMain::onLoggedIn()

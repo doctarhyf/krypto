@@ -22,6 +22,8 @@ FormLogin::FormLogin(QWidget *parent) :
     connect(formMain, SIGNAL(loggedOut()), this, SLOT(onFormMainLoggedOut()));
     connect(this, SIGNAL(willLogin()), formMain, SLOT(onLoggedIn()));
 
+
+
 }
 
 FormLogin::~FormLogin()
