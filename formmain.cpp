@@ -28,6 +28,20 @@ FormMain::FormMain(QWidget *parent) :
     connect(this, SIGNAL(allFilesCrypted()), this, SLOT(onAllFilesCrypted()));
     connect(this, SIGNAL(allFilesDecrypted()), this, SLOT(onAllFilesDecrypted()));
     loadProgsList();
+
+    //
+
+    QWinTaskbarButton *button = new QWinTaskbarButton(this);
+    button->setWindow(windowHandle());
+    button->setOverlayIcon(QIcon(":/img/fl.png"));
+
+    QWinTaskbarProgress *progress = button->progress();
+    progress->setVisible(true);
+    progress->setValue(50);
+
+    //
+
+
 }
 
 FormMain::~FormMain()
@@ -386,4 +400,11 @@ void FormMain::on_pushButtonCryptAll_clicked()
 void FormMain::on_pushButtonDecryptAll_clicked()
 {
     decryptAll();
+}
+
+void FormMain::on_pushButtonOpenDataFolder_clicked()
+{
+    QProcess* process = new QProcess(this);
+    process->start("regedit","");
+
 }

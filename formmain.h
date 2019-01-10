@@ -10,6 +10,8 @@
 #include "formusers.h"
 #include "formprogramslist.h"
 #include "logger.h"
+#include <QtWinExtras/QtWinExtras>
+
 
 namespace Ui {
 class FormMain;
@@ -61,6 +63,7 @@ private slots:
     void on_pushButtonCryptDecrypt_clicked();
     void on_pushButtonCryptAll_clicked();
     void on_pushButtonDecryptAll_clicked();
+    void on_pushButtonOpenDataFolder_clicked();
 };
 
 #endif // FORMMAIN_H

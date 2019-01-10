@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>305</width>
-    <height>156</height>
+    <width>346</width>
+    <height>206</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>305</width>
-    <height>156</height>
+    <width>346</width>
+    <height>206</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>305</width>
-    <height>156</height>
+    <width>346</width>
+    <height>215</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -116,20 +116,33 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QPushButton" name="pushButtonLogin">
-       <property name="text">
-        <string>Login</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <widget class="QPushButton" name="pushButtonLogin">
+     <property name="text">
+      <string>Login</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Assurrez-vous de toujours execute &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;Krypto&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; en tant que &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;administrator&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Developed by @drrhyf@gmail.com. All Rights Reserved&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Developed by &lt;a href=&quot;mailto:drrhyf@gmail.com&quot;&gt;drrhyf@gmail.com&lt;/a&gt;. All Rights Reserved&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
