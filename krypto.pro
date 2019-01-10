@@ -13,27 +13,22 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    #widgetProgramsList.cpp \
     formlogin.cpp \
     formmain.cpp \
     formusers.cpp \
     formprogramslist.cpp \
     dialogaddprogram.cpp \
-    dialogadduser.cpp \
     logger.cpp
 
 HEADERS  += \
-    #widgetProgramsList.h \
     formlogin.h \
     formmain.h \
     formusers.h \
     formprogramslist.h \
     dialogaddprogram.h \
-    dialogadduser.h \
     logger.h
 
 FORMS    += \
-    #widgetProgramsList.ui \
     formlogin.ui \
     formmain.ui \
     formusers.ui \
