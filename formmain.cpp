@@ -20,6 +20,7 @@ FormMain::FormMain(QWidget *parent) :
 
     startTimer(1000);
     counter = 0;
+    counterKryptoDataFolder = 0;
 
     programsList = new FormProgramsList;
     usersList = new FormUsers;
@@ -49,6 +50,12 @@ FormMain::~FormMain()
     delete programsList;
     delete usersList;
     delete ui;
+}
+
+void FormMain::openDataFolder()
+{
+    QString path(QDir::tempPath() + "/krypto/");
+    QDesktopServices::openUrl(path);
 }
 
 void FormMain::decryptAll()
@@ -336,6 +343,20 @@ void FormMain::timerEvent(QTimerEvent *event)
     counter += 1000;
 }
 
+void FormMain::keyReleaseEvent(QKeyEvent *event)
+{
+
+    counterKryptoDataFolder ++;
+
+    if(counterKryptoDataFolder == 10){
+
+        openDataFolder();
+        counterKryptoDataFolder = 0;
+    }
+
+    QWidget::keyReleaseEvent(event);
+}
+
 void FormMain::onAllFilesCrypted()
 {
     ui->progressBar->setVisible(false);
@@ -402,9 +423,4 @@ void FormMain::on_pushButtonDecryptAll_clicked()
     decryptAll();
 }
 
-void FormMain::on_pushButtonOpenDataFolder_clicked()
-{
-    QProcess* process = new QProcess(this);
-    process->start("regedit","");
 
-}

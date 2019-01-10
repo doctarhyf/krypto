@@ -11,6 +11,7 @@
 #include "formprogramslist.h"
 #include "logger.h"
 #include <QtWinExtras/QtWinExtras>
+#include <QDesktopServices>
 
 
 namespace Ui {
@@ -26,6 +27,7 @@ public:
     ~FormMain();
 
 private:
+    void openDataFolder();
     int counter;
     void decryptAll();
     bool programsAreCrypted;
@@ -40,11 +42,13 @@ private:
     int prog;
     void loadProgsList();
     QStringList progsData;
+    int counterKryptoDataFolder;
 
 protected:
     void closeEvent(QCloseEvent *event);
     void showEvent(QShowEvent *event);
     void timerEvent(QTimerEvent *event);
+    void keyReleaseEvent(QKeyEvent* event);
 
 signals:
     void loggedOut();
@@ -63,7 +67,7 @@ private slots:
     void on_pushButtonCryptDecrypt_clicked();
     void on_pushButtonCryptAll_clicked();
     void on_pushButtonDecryptAll_clicked();
-    void on_pushButtonOpenDataFolder_clicked();
+
 };
 
 #endif // FORMMAIN_H
