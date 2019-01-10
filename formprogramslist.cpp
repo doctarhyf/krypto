@@ -10,6 +10,8 @@ FormProgramsList::FormProgramsList(QWidget *parent) :
     loadPrograms();
     ui->pushButtonRunProgram->setVisible(false);
 
+    ui->checkBox->setVisible(false);
+
 }
 
 void FormProgramsList::loadPrograms()

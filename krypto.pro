@@ -38,8 +38,7 @@ FORMS    += \
     formmain.ui \
     formusers.ui \
     formprogramslist.ui \
-    dialogaddprogram.ui \
-    dialogadduser.ui
+    dialogaddprogram.ui
 
 RESOURCES += \
     res.qrc

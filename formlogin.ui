@@ -120,6 +120,10 @@
      <property name="text">
       <string>Login</string>
      </property>
+     <property name="icon">
+      <iconset resource="res.qrc">
+       <normaloff>:/img/icon.png</normaloff>:/img/icon.png</iconset>
+     </property>
     </widget>
    </item>
    <item>

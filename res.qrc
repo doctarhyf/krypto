@@ -2,5 +2,9 @@
     <qresource prefix="/">
         <file>img/fl.png</file>
         <file>img/icon.png</file>
+        <file>img/programs.png</file>
+        <file>img/users.png</file>
+        <file>img/users_label.jpg</file>
+        <file>img/programs_label.jpg</file>
     </qresource>
 </RCC>

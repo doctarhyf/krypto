@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>189</width>
-    <height>199</height>
+    <width>218</width>
+    <height>200</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -46,12 +46,20 @@
        <property name="text">
         <string>USERS LIST</string>
        </property>
+       <property name="icon">
+        <iconset resource="res.qrc">
+         <normaloff>:/img/users.png</normaloff>:/img/users.png</iconset>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="pushButtonProgramsList">
        <property name="text">
         <string>PROGRAMS LIST</string>
+       </property>
+       <property name="icon">
+        <iconset resource="res.qrc">
+         <normaloff>:/img/programs.png</normaloff>:/img/programs.png</iconset>
        </property>
       </widget>
      </item>
@@ -105,6 +113,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>
