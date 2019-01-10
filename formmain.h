@@ -23,10 +23,12 @@ class FormMain : public QWidget
     Q_OBJECT
 
 public:
+    void setIsAdmin(bool isAdmin);
     explicit FormMain(QWidget *parent = 0);
     ~FormMain();
 
 private:
+    bool isAdmin;
     void openDataFolder();
     int counter;
     void decryptAll();

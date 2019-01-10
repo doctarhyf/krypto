@@ -2,6 +2,19 @@
 #include "ui_formmain.h"
 #define CRYPT_LANE 100
 
+void FormMain::setIsAdmin(bool isAdmin)
+{
+    this->isAdmin = isAdmin;
+
+    if(!this->isAdmin){
+            ui->pushButtonUsersList->setVisible(false);
+            ui->pushButtonProgramsList->setVisible(false);
+        }else{
+            ui->pushButtonUsersList->setVisible(true);
+            ui->pushButtonProgramsList->setVisible(true);
+        }
+}
+
 FormMain::FormMain(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FormMain)
@@ -9,6 +22,8 @@ FormMain::FormMain(QWidget *parent) :
 
 
     ui->setupUi(this);
+
+    isAdmin = false;
 
     ui->progressBar->setVisible(false);
     ui->pushButtonCryptDecrypt->setVisible(false);
@@ -313,13 +328,7 @@ void FormMain::showEvent(QShowEvent *event)
     QString username = property("user").toString();
     ui->labelUsername->setText(username);
 
-    if(username != "bld"){
-        ui->pushButtonUsersList->setVisible(false);
-        ui->pushButtonProgramsList->setVisible(false);
-    }else{
-        ui->pushButtonUsersList->setVisible(true);
-        ui->pushButtonProgramsList->setVisible(true);
-    }
+
 
     event->accept();
 }
@@ -369,6 +378,13 @@ void FormMain::onAllFilesDecrypted()
 
 void FormMain::onLoggedIn()
 {
+    if(!isAdmin){
+            ui->pushButtonUsersList->setVisible(false);
+            ui->pushButtonProgramsList->setVisible(false);
+        }else{
+            ui->pushButtonUsersList->setVisible(true);
+            ui->pushButtonProgramsList->setVisible(true);
+        }
     on_initStartTime();
     decryptAll();
 }

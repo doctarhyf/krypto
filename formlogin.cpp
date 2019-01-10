@@ -47,6 +47,7 @@ void FormLogin::login()
         Logger::logData("Login", username);
 
         formMain->setProperty("user", ui->lineEditUsername->text());
+        formMain->setIsAdmin(isAdmin);
         formMain->show();
         emit willLogin();
         hide();
