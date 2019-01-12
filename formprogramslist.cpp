@@ -8,7 +8,7 @@ FormProgramsList::FormProgramsList(QWidget *parent) :
     ui->setupUi(this);
 
     loadPrograms();
-    ui->pushButtonRunProgram->setVisible(false);
+    //ui->pushButtonRunProgram->setVisible(false);
 
     ui->checkBox->setVisible(false);
 
@@ -160,6 +160,21 @@ void FormProgramsList::on_pushButtonRealoadAllPrograms_clicked()
 
 void FormProgramsList::on_pushButtonRunProgram_clicked()
 {
+
+    QProcess more;
+      more.start("\"more\"");
+      more.write("Text to display");
+      more.closeWriteChannel();
+
+    /*QString path("\"" + currentProgPath + "\"");
+    qDebug() << "Will run : " << path;
+
+    QProcess *process = new QProcess(this);
+
+
+    int res = process->execute(path);
+
+    qDebug() << "Process res : " << res;*/
 
 }
 

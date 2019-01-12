@@ -12,6 +12,7 @@ TARGET = krypto
 TEMPLATE = app
 
 
+
 SOURCES += main.cpp \
     formlogin.cpp \
     formmain.cpp \
@@ -39,3 +40,6 @@ RESOURCES += \
     res.qrc
 
 RC_FILE = myrc.rc
+
+TRANSLATIONS = krypto_fr.ts \
+                 krypto_ch.ts

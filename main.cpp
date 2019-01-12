@@ -1,10 +1,11 @@
-#include "widgetProgramsList.h"
+
 #include <QApplication>
 #include "formlogin.h"
 #include <QtDebug>
 #include <QtCore>
 #include <QFile>
 #include <QTextStream>
+#include <QTranslator>
 
 int main(int argc, char *argv[])
 {
@@ -45,7 +46,12 @@ int main(int argc, char *argv[])
         }
     }
 
+    QTranslator translator;
 
+    translator.load("krypto_fr");
+    a.installTranslator(&translator);
+
+    qDebug() << "Da dir : " << QDir().absoluteFilePath("test.txt");
 
     FormLogin f;
     f.show();

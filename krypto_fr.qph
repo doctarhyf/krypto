@@ -1,0 +1,267 @@
+<!DOCTYPE QPH>
+<QPH language="fr_FR">
+<phrase>
+    <source>Add new program</source>
+    <target>Ajouter un nouveau program</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Program Name :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Nom du programme:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>...</source>
+    <target>...</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Program path :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Chemin :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>ex:C:\Program Files (x86)\Image-Line\FL Studio 12\FL64.exe</source>
+    <target>ex:C:\Program Files (x86)\Image-Line\FL Studio 12\FL64.exe</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;PLEASE SELECT A &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;VALID .EXE&lt;/span&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; FILE!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;SVP VEUILLEZ CHOISIR UN &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;FICHIER EXE VALIDE&lt;/span&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; !&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>Program path</source>
+    <target>Chemin du programme</target>
+</phrase>
+<phrase>
+    <source>Invalid file</source>
+    <target>Fichier invalide</target>
+</phrase>
+<phrase>
+    <source>The file selected is invalid, please select another one</source>
+    <target>Le fichier selectionne est invalide</target>
+</phrase>
+<phrase>
+    <source>Krypto</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>User Name</source>
+    <target>Nom d&apos;utilisateur</target>
+</phrase>
+<phrase>
+    <source>bld</source>
+    <target>bld</target>
+</phrase>
+<phrase>
+    <source>Password</source>
+    <target>Mot de passe</target>
+</phrase>
+<phrase>
+    <source>Login</source>
+    <target>Se connecter</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Assurrez-vous de toujours execute &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;Krypto&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; en tant que &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;administrator&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Assurrez-vous de toujours execute &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;Krypto&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; en tant que &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;administrator&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Developed by &lt;a href=&quot;mailto:drrhyf@gmail.com&quot;&gt;drrhyf@gmail.com&lt;/a&gt;. All Rights Reserved&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Developee par &lt;a href=&quot;mailto:drrhyf@gmail.com&quot;&gt;drrhyf@gmail.com&lt;/a&gt;. Tous droits reserves&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>Incorrect username or password</source>
+    <target>Nom d&apos;utilisateur ou mot de passe incorrect</target>
+</phrase>
+<phrase>
+    <source>The username and password you interred is incorrect, please try again!</source>
+    <target>Le mot de passe ou le nom d&apos;utilisateur entre est incorrect!</target>
+</phrase>
+<phrase>
+    <source>Input new password</source>
+    <target>Entrez un nouveu mot de passe</target>
+</phrase>
+<phrase>
+    <source>New password</source>
+    <target>Nouveau mot de passe</target>
+</phrase>
+<phrase>
+    <source>Krypto</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>CRYPT/DECRYPT ALL</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Crypt All</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Decrypt All</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>USERS LIST</source>
+    <target>LISTE D&apos;UTILISATEURS</target>
+</phrase>
+<phrase>
+    <source>PROGRAMS LIST</source>
+    <target>LISTE DES PROGRAMMES</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Current User :&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Utilisateur connecte :&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>Docta Rhyf</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Connecte depuis :</source>
+    <target>Connecte depuis :</target>
+</phrase>
+<phrase>
+    <source>00:00:00</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Logout</source>
+    <target>Se deconnecter</target>
+</phrase>
+<phrase>
+    <source>Wanna logout</source>
+    <target>Voulez-vous vous deconnecter</target>
+</phrase>
+<phrase>
+    <source>Are you sure you wanna logout and crypt all programs?</source>
+    <target>Etes-vous sure de vouloir vous deconnecter et crypter tous les programmes?</target>
+</phrase>
+<phrase>
+    <source>Programs List</source>
+    <target>Liste des programmes</target>
+</phrase>
+<phrase>
+    <source>Search ...</source>
+    <target>Recherche ...</target>
+</phrase>
+<phrase>
+    <source>Refresh</source>
+    <target>Actualiser</target>
+</phrase>
+<phrase>
+    <source>Clear All</source>
+    <target>Vider la liste</target>
+</phrase>
+<phrase>
+    <source>Run</source>
+    <target>Demarrer</target>
+</phrase>
+<phrase>
+    <source>Add New</source>
+    <target>Ajouter</target>
+</phrase>
+<phrase>
+    <source>Delete</source>
+    <target>Supprimer</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Programe Name :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Nom de programme :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>...</source>
+    <target>...</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Program path :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Chemin de programme :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>Autolaunch</source>
+    <target>Lancement automatique</target>
+</phrase>
+<phrase>
+    <source>Can&apos;t open program</source>
+    <target>Impossible d&apos;ouvrir le programme</target>
+</phrase>
+<phrase>
+    <source>Program already exists</source>
+    <target>Ce programme existe deja sur la liste</target>
+</phrase>
+<phrase>
+    <source>Sorry this program already exists</source>
+    <target>Desole le programme choisit est deja liste</target>
+</phrase>
+<phrase>
+    <source>Delete all program?</source>
+    <target>Tout supprimer?</target>
+</phrase>
+<phrase>
+    <source>Are you sure you wanna remove all programs?</source>
+    <target>Etes-vous sur de vouloir supprimer tous les programmes de la liste?</target>
+</phrase>
+<phrase>
+    <source>Delete the program?</source>
+    <target>Supprimer tous les programmes?</target>
+</phrase>
+<phrase>
+    <source>Are you sure you wanna delete this program?</source>
+    <target>Etes-vous sur de vouloir suprrimer tous les programmes</target>
+</phrase>
+<phrase>
+    <source>Users List</source>
+    <target>Liste utilisateurs</target>
+</phrase>
+<phrase>
+    <source>Delete</source>
+    <target>Supprimer</target>
+</phrase>
+<phrase>
+    <source>Username</source>
+    <target>Nom d&apos;utilisateur</target>
+</phrase>
+<phrase>
+    <source>newuser</source>
+    <target>Nouvel utilisateur</target>
+</phrase>
+<phrase>
+    <source>Password</source>
+    <target>Mot de passe</target>
+</phrase>
+<phrase>
+    <source>newpassword</source>
+    <target>Nouveau mot de passe</target>
+</phrase>
+<phrase>
+    <source>Add</source>
+    <target>Ajouter</target>
+</phrase>
+<phrase>
+    <source>Users Log</source>
+    <target>Historique utilisateurs</target>
+</phrase>
+<phrase>
+    <source>Clear Log</source>
+    <target>Effacer l&apos;historique</target>
+</phrase>
+<phrase>
+    <source>No empty fields</source>
+    <target>Pas de champ vide</target>
+</phrase>
+<phrase>
+    <source>Please fill in the name and password</source>
+    <target>Veuillez remplir le nom d&apos;utilisateur et le mot de passe</target>
+</phrase>
+<phrase>
+    <source>User already exists</source>
+    <target>Utilisateur deja existant</target>
+</phrase>
+<phrase>
+    <source>This user already exists</source>
+    <target>Cet utilisateur est deja existant</target>
+</phrase>
+<phrase>
+    <source>User added</source>
+    <target>Utilisateur ajoute</target>
+</phrase>
+<phrase>
+    <source>New user added successfully</source>
+    <target>Nouvel utilisateur ajoute avec succes</target>
+</phrase>
+</QPH>
