@@ -48,8 +48,14 @@ int main(int argc, char *argv[])
 
     QTranslator translator;
 
-    translator.load("krypto_fr");
-    a.installTranslator(&translator);
+    if(translator.load("C:/Users/user/Documents/Qt\ Projects/krypto/krypto_fr")){
+        a.installTranslator(&translator);
+        qDebug() << "krypto_fr loaded!";
+    }else{
+        qDebug() << "Failed to load trans file ...";
+    }
+
+
 
     qDebug() << "Da dir : " << QDir().absoluteFilePath("test.txt");
 
