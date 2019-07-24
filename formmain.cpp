@@ -47,13 +47,13 @@ FormMain::FormMain(QWidget *parent) :
 
     //
 
-    QWinTaskbarButton *button = new QWinTaskbarButton(this);
+    /*QWinTaskbarButton *button = new QWinTaskbarButton(this);
     button->setWindow(windowHandle());
     button->setOverlayIcon(QIcon(":/img/fl.png"));
 
     QWinTaskbarProgress *progress = button->progress();
     progress->setVisible(true);
-    progress->setValue(50);
+    progress->setValue(50);*/
 
     //
 

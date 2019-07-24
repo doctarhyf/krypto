@@ -10,7 +10,7 @@
 #include "formusers.h"
 #include "formprogramslist.h"
 #include "logger.h"
-#include <QtWinExtras/QtWinExtras>
+//#include <QtWinExtras/QtWinExtras>
 #include <QDesktopServices>
 
 
